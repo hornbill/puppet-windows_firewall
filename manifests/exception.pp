@@ -190,7 +190,7 @@ define windows_firewall::exception(
     
     if $enabled != '' {
         exec { "turn rule on or off ${display_name}":
-            command => "C:\\Windows\\System32\\netsh.exe advfirewall firewall set rule name=\"${display_name}\" new enable=${enabled}",
+            command => "C:\\Windows\\System32\\netsh.exe advfirewall firewall set rule name=\"${display_name}\" dir=${direction} new enable=${enabled}",
             provider => windows,
             onlyif  => $onlyif,
        }
